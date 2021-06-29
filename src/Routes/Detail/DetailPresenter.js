@@ -61,8 +61,8 @@ const Cover = styled.div `
     }
 
     @media only screen and (max-width: 768px) {
-        min-width: 160px;
-        height: 200px;
+        min-width: 140px;
+        height: 240px;
         margin-bottom: 10px;
     }
 `;
@@ -89,7 +89,7 @@ const Title = styled.h3 `
     font-size: 32px;
 
     @media only screen and (max-width: 768px) {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 `;
 
