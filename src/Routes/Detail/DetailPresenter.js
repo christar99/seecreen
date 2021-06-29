@@ -10,6 +10,14 @@ const Container = styled.div `
     width: 100vw;
     position: relative;
     padding: 50px;
+
+    @media only screen and (max-width: 1200px) {
+        padding: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        padding: 10px;
+    }
 `;
 
 const BackDrop = styled.div `
@@ -32,6 +40,11 @@ const Content = styled.div `
     display: flex;
     position: relative;
     z-index: 1;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const Cover = styled.div `
@@ -48,28 +61,44 @@ const Cover = styled.div `
     }
 
     @media only screen and (max-width: 768px) {
-        min-width: 200px;
-        height: 320px;
+        min-width: 160px;
+        height: 200px;
+        margin-bottom: 10px;
     }
 `;
 
 const DataContainer = styled.div`
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width: 768px) {
+        align-items: center;
+    }
 `;
 
 const Data = styled.div `
     width: 70%;
-    max-height: 25vh;
+    max-height: 35vh;
     margin-left: 10px;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 const Title = styled.h3 `
     font-size: 32px;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 `;
 
 const ItemContainer = styled.div `
     margin: 20px 0;
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
 `;
 
 const Item = styled.span `
@@ -84,14 +113,25 @@ const Overview = styled.p `
     font-size: 12px;
     opacity: 0.7;
     line-height: 1.5;
-    width: 60vw;
+    width: 100%;
     margin-bottom: 20px;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 0.7rem;
+    }
 `;
 
 const IframeContianer = styled.div`
     width: 60vw;
     height: 580px;
     margin-left: 20px;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        height: 35vh;
+        margin-left: 0;
+        margin-top: 20px;
+    }
 `;
 
 const IFrame = styled.iframe`
@@ -104,11 +144,9 @@ const IFrame = styled.iframe`
     }
 
     @media only screen and (max-width: 768px) {
-        position: relative;
-        right: 230px;
-        bottom: -15vh;
-        width: 85vw;
-        height: 40vh;
+        margin: 0;
+        width: 100%;
+        height: 100%;
     }
 `;
 

@@ -11,11 +11,18 @@ const globalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+    html {
+        width: 100vw;
+        height: 100vh;
+    }
+    
     body {
         font-size: 12px;
         background-color: rgba(20, 20, 20, 1);
         color: white;
         padding-top: 50px;
+        width: 100vw;
+        height: 100vh;
     }
 `;
 

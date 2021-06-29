@@ -19,8 +19,17 @@ const Form = styled.form`
 const Input = styled.input`
     all: unset;
     font-size: 30px;
-    width: 20%;
+    width: 30vw;
     border-bottom: 2px solid darkgray;
+
+    @media only screen and (max-width: 1200px) {
+        font-size: 1.5rem;
+        width: 40vw;
+    }
+    @media only screen and (max-width: 767px) {
+        font-size: 1.5rem;
+        width: 80vw;
+    }
 `;
 
 
