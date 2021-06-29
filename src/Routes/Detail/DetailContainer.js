@@ -4,7 +4,7 @@ import DetailPresenter from './DetailPresenter';
 
 
 
-export default class extends React.Component {
+class DetailContainer extends React.Component {
     constructor(props) {
         super(props);
         const {location: {pathname}} = props;
@@ -20,8 +20,7 @@ export default class extends React.Component {
     async componentDidMount() {
         const {
             match: { params: { id } },
-            history: { push },
-            location: { pathname }
+            history: { push }
         } = this.props;
 
         const { isMovie } = this.state;
@@ -59,3 +58,5 @@ export default class extends React.Component {
         )
     }
 }
+
+export default DetailContainer;

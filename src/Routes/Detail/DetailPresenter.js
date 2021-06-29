@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 
-const Container = styled.div`
+const Container = styled.div `
     height: calc(100vh - 50px);
-    width: 100%;
+    width: 100vw;
     position: relative;
     padding: 50px;
 `;
 
-const BackDrop = styled.div`
+const BackDrop = styled.div `
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: url(${props => props.bgImage});
     background-position: center center;
     background-size: cover;
@@ -26,7 +26,7 @@ const BackDrop = styled.div`
     z-index: 0;
 `;
 
-const Content = styled.div`
+const Content = styled.div `
     width: 100%;
     height: 100%;
     display: flex;
@@ -34,88 +34,174 @@ const Content = styled.div`
     z-index: 1;
 `;
 
-const Cover = styled.div`
-    width: 30%;
-    height: 100%;
+const Cover = styled.div `
+    min-width: 500px;
+    height: 800px;
     background: url(${props => props.bgImage});
     background-position: center center;
     background-size: cover;
     border-radius: 5px;
+    
+    @media only screen and (max-width: 1200px) {
+        min-width: 375px;
+        height: 600px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        min-width: 200px;
+        height: 320px;
+    }
 `;
-const Data = styled.div`
+
+const DataContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const Data = styled.div `
     width: 70%;
+    max-height: 25vh;
     margin-left: 10px;
 `;
 
-const Title = styled.h3`
+const Title = styled.h3 `
     font-size: 32px;
 `;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled.div `
     margin: 20px 0;
 `;
 
-const Item = styled.span`
+const Item = styled.span `
 
 `;
 
-const Divider = styled.span`
+const Divider = styled.span `
     margin: 0 10px;
 `;
 
-const Overview = styled.p`
+const Overview = styled.p `
     font-size: 12px;
     opacity: 0.7;
     line-height: 1.5;
-    width: 50%;
+    width: 60vw;
+    margin-bottom: 20px;
 `;
 
-const DetailPresenter = ({ result, loading, error }) => (
-    loading ? ( <>
-            <Helmet>
-                <title>Loading | Seecreen</title>
-            </Helmet>
-            <Loader />
-        </>) : (
-            error ? <Message />
-            : <Container>
-                <Helmet>
-                    <title>
-                        {result.original_title ? result.original_title : result.original_name} | Seecreen
-                    </title>
-                </Helmet>
-                <BackDrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
-                <Content>
-                    <Cover bgImage=
-                        {result.poster_path
-                            ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-                            : require('assets/noPoster.png').default}
-                    />
-                    <Data>
-                        <Title>
-                            {result.original_title ? result.original_title : result.original_name}
-                        </Title>
-                        <ItemContainer>
-                            <Item>
-                                {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}
-                            </Item>
-                            <Divider>•</Divider>
-                            <Item>
-                                {result.runtime ? result.runtime : result.episode_run_time} min
-                    </Item>
-                            <Divider>•</Divider>
-                            <Item>
-                                {result.genres && result.genres.map((genre, index) =>
-                                    index === result.genres.length - 1 ? genre.name : `${genre.name}/`)}
-                            </Item>
-                        </ItemContainer>
-                        <Overview>{result.overview}</Overview>
-                    </Data>
-                </Content>
-            </Container>
-        )
-);
+const IframeContianer = styled.div`
+    width: 60vw;
+    height: 580px;
+    margin-left: 20px;
+`;
 
+const IFrame = styled.iframe`
+    width: 100%;
+    height: 580px;
+
+    @media only screen and (max-width: 1200px) {
+        width: 80%;
+        height: 60%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        position: relative;
+        right: 230px;
+        bottom: -15vh;
+        width: 85vw;
+        height: 40vh;
+    }
+`;
+
+const DetailPresenter = ({result, loading, error}) => (
+    loading
+        ? (
+            <> 
+                < Helmet > <title>Loading | Seecreen</title>
+                </Helmet>
+                <Loader/>
+            </>
+        )
+        : (
+                error
+                ? <Message/>
+                : <Container>
+                    <Helmet>
+                        <title>
+                            {
+                                result.original_title
+                                    ? result.original_title
+                                    : result.original_name
+                            }
+                            | Seecreen
+                        </title>
+                    </Helmet>
+                    <BackDrop
+                        bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}/>
+                    <Content>
+                        <Cover
+                            bgImage={result.poster_path
+                                ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                                : require('assets/noPoster.png').default}/>
+                        <DataContainer>
+                            <Data>
+                                <Title>
+                                    {
+                                        result.original_title
+                                            ? result.original_title
+                                            : result.original_name
+                                    }
+                                </Title>
+                                <ItemContainer>
+                                    <Item>
+                                        {
+                                            result.release_date
+                                                ? result
+                                                    .release_date
+                                                    .substring(0, 4)
+                                                : result
+                                                    .first_air_date
+                                                    .substring(0, 4)
+                                        }
+                                    </Item>
+                                    <Divider>•</Divider>
+                                    <Item>
+                                        {
+                                            result.runtime
+                                                ? result.runtime
+                                                : result.episode_run_time
+                                        }
+                                        min
+                                    </Item>
+                                    <Divider>•</Divider>
+                                    <Item>
+                                        {
+                                            result.genres && result
+                                                .genres
+                                                .map(
+                                                    (genre, index) => index === result.genres.length - 1
+                                                        ? genre.name
+                                                        : `${genre.name}/`
+                                                )
+                                        }
+                                    </Item>
+                                </ItemContainer>
+                                <Overview>{result.overview}</Overview>
+                            </Data>
+                            <IframeContianer>
+                                {console.log(result.videos.results[0])}
+                                <IFrame
+                                    src={`https://www.youtube.com/embed/${result.videos.results[0].key}`}
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="allowfullscreen"
+                                />
+                            </IframeContianer>
+                        </DataContainer>
+                    </Content>
+                </Container>
+            )
+);
 
 DetailPresenter.propTypes = {
     result: PropTypes.object,
