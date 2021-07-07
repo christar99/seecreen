@@ -165,12 +165,7 @@ const DetailPresenter = ({result, loading, error}) => (
                 : <Container>
                     <Helmet>
                         <title>
-                            {
-                                result.original_title
-                                    ? result.original_title
-                                    : result.original_name
-                            }
-                            | Seecreen
+                            {result.original_title ? result.original_title : result.original_name} | Seecreen
                         </title>
                     </Helmet>
                     <BackDrop
