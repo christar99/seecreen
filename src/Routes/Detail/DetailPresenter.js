@@ -225,16 +225,17 @@ const DetailPresenter = ({result, loading, error}) => (
                                 </ItemContainer>
                                 <Overview>{result.overview}</Overview>
                             </Data>
-                            <IframeContianer>
-                                {console.log(result.videos.results[0])}
-                                <IFrame
-                                    src={`https://www.youtube.com/embed/${result.videos.results[0].key}`}
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen="allowfullscreen"
-                                />
-                            </IframeContianer>
+                            {result.videos.results.length > 0 && 
+                                <IframeContianer>
+                                    <IFrame
+                                        src={`https://www.youtube.com/embed/${result.videos.results[0].key}`}
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen="allowfullscreen"
+                                    />
+                                </IframeContianer>
+                            }
                         </DataContainer>
                     </Content>
                 </Container>
