@@ -1,4 +1,7 @@
-# 사용기술 및 라이브러리
+## 개요
+ 영화와 TV상영작의 정보를 간단하게 볼 수 있는 웹사이트입니다.
+
+## 사용기술 및 라이브러리
  * Javascript(es6), React
  * React-Helmet, styled-component
  * TheMovieDB API
