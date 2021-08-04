@@ -1,21 +1,23 @@
-# play Movie
+# 사용기술 및 라이브러리
+ * Javascript(es6), React
+ * React-Helmet, styled-component
+ * TheMovieDB API
+ 
+## 기능
+ * Movie
+    - Now Playing (현재상영작)
+    - Upcoming Movies (개봉예정작)
+    - Popular Movies (인기작품)
 
-Learning React and ES6 by building a Movie Discovery App.
+ * TV Shows
+    - Top Rated Shows (시청률 순위)
+    - Popular Shows (인기방송 프로그램)
+    - Airing Today Shows (금일방송 프로그램)
 
-## Screen
+ * Search
+    - TV프로그램과 영화를 검색
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
-
-## API Verbs
-
-- [ ] Now Playing (Movie)
-- [ ] Upcoming (Movie)
-- [ ] Top Rated (TV, Movie)
-- [ ] Popular (TV, Movie)
-- [ ] Airing Today (TV)
-- [ ] TV Show Detail
-- [ ] Movie Detail
-- [ ] Search (Movie, TV)
+ * Detail
+    - TV나 영화의 포스터를 클릭하면, 상세페이지로 이동
+    - 개봉년도, 상영시간, 장르, 간단줄거리 등을 보여줌
+    - 티저영상 시청가능
